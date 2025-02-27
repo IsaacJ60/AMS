@@ -1,0 +1,14 @@
+import http.client
+
+conn = http.client.HTTPConnection("localhost", 5000)  # Change HTTPConnection to HTTPSConnection
+
+headers = {
+    'authorization': "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkpGYXZMTG9ZbEVfejdqV2NhNVUwZCJ9.eyJpc3MiOiJodHRwczovL2Rldi1rZDZzMjUxajR3YjdnNm11LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJTMWhvV3JyODg3S2NwQUdTQ3lFYnQ5WUJjUWNzUmdJTUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9wbGF5ZXJtYW5hZ2VtZW50LmNvbSIsImlhdCI6MTczODQzMTY5NiwiZXhwIjoxNzM4NTE4MDk2LCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJhenAiOiJTMWhvV3JyODg3S2NwQUdTQ3lFYnQ5WUJjUWNzUmdJTSIsInBlcm1pc3Npb25zIjpbXX0.rtUZriZRbRB2QPZ6ABObdoNyFiFuYq6wOP_qvceXj3HGYVLgJkCutGeyEQf7phc7PVVzDYrvxO32wf8nYXgrl1PlrjHZKscwgfx5uDIWQm80whg4GG69gehT85D-jhax9-WicnWo0QvxHZQyko1LfGZRCk0eFkOct11lB4kjU9pDE5FJaUVQeWfa8KqvXQEySXzlqf432wOABnNt0xutIziuZZu0M5dgZt7HZyaq2IOToscRBwKoYQw7_BdZqbLrdf5BM3rmTIgp_J7lJZvFByVHvCjckPleMeXIZ4z3S2OxPC-DIEbwNrUnooPp5PGxGmiJnTbAbEIYuIJZKoVvAQ"
+}
+
+conn.request("GET", "/api/public", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
